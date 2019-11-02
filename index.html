@@ -1,22 +1,79 @@
 ﻿<!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
     <style>
         /* Set the size of the div element that contains the map */
         #map {
-            height: 400px; /* The height is 400 pixels */
-            width: 75%; /* The width is the width of the web page */
+            height: 100vh; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+
+        /* Set font for all headings */
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif;
+            color: #CE0F3D
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
         }
     </style>
-    <script src="site.js"></script>
+    <body class="w3-light-grey w3-content" style="max-width:1600px">
+        <script src="site.js"></script>
 </head>
 <body>
-    <h3>Map of Ohio State</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
 
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV__sy3zIBXSK9i6nNVf5YBbsOvwCN6pY&callback=initMap">
-    </script>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar">
+        <br>
+        <h3 class="w3-padding-64 w3-center"><b>OSU BATHROOM BUDDY<br></b></h3>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+        <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+        <a href="nearme.html" onclick="w3_close()" class="w3-bar-item w3-button">NEAR ME</a>
+        <a href="allbathrooms.html" onclick="w3_close()" class="w3-bar-item w3-button">ALL BATHROOMS</a>
+        <a href="addbathroom.html" onclick="w3_close()" class="w3-bar-item w3-button">ADD BATHROOM</a>
+        <a href="reviewbathroom.html" onclick="w3_close()" class="w3-bar-item w3-button">REVIEW BATHROOMS</a>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+        <span class="w3-left w3-padding">OSU BATHROOM BUDDY</span>
+        <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <div class="w3-padding-large" id="main">
+        <div class="w3-main" style="margin-left:150px">
+
+            <!-- Push down content on small screens -->
+            <div class="w3-hide-large"></div>
+            <!-- Header/Home -->
+            <div id="map"></div>
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV__sy3zIBXSK9i6nNVf5YBbsOvwCN6pY&callback=initMap">
+            </script>
+
 </body>
 </html>
