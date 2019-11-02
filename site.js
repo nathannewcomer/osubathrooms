@@ -13,7 +13,7 @@ function initMap() {
             center: OhioState,
             restriction: { latLngBounds: { north: 40.006563, south: 39.995, west: -83.02374, east: -83.008 } }
         });
-    //Stlying the map and hiding businesses
+    //Styling the map and hiding businesses
     var mapStyle = [
         {
             featureType: "poi.business",
@@ -27,7 +27,21 @@ function initMap() {
           ];
         map.setOptions({ styles: mapStyle });
     // Marker positioned at Ohio State
-    
+
+    var RestroomIcon = { url: 'OSUBath/restroom.png', scaledSize: new google.maps.Size(35, 35) };
+    var StudyIcon = { url: 'OSUBath/studyspot.png', scaledSize: new google.maps.Size(35, 35) };
+
     var OhioUnionLoc = { lat: 39.998003, lng: -83.008852 };
-        var OhioUnion = new google.maps.Marker({ position: OhioUnionLoc, map: map })
+    var OhioUnion = new google.maps.Marker({
+        position: OhioUnionLoc,
+        map: map,
+        icon: RestroomIcon
+    })
+
+    var ThompsonLoc = { lat: 39.999219, lng: -83.014724 };
+    var OhioUnion = new google.maps.Marker({
+        position: ThompsonLoc,
+        map: map,
+        icon: StudyIcon
+    })
 }
