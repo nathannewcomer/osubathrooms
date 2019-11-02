@@ -1,3 +1,4 @@
+
 // JavaScript source code
 // Initialize and add the map
 var OhioState = { lat: 39.999, lng: -83.013 };
@@ -26,21 +27,38 @@ function initMap() {
             stylers: [{ visibility: "off", }]
         },
         {
-        featureType: 'road',
-        elementType: 'geometry',
+            featureType: 'road',
+            elementType: 'geometry',
             stylers: [{ color: 'red' }]
         }
-          ];
-        map.setOptions({ styles: mapStyle });
+    ];
+    map.setOptions({ styles: mapStyle });
     // Marker positioned at Ohio State
 
     var RestroomIcon = { url: 'OSUBath/restroom.png', scaledSize: new google.maps.Size(35, 35) };
     var StudyIcon = { url: 'OSUBath/studyspot.png', scaledSize: new google.maps.Size(35, 35) };
+    
+
 
     var OhioUnionLoc = { lat: 39.998003, lng: -83.008852 };
-        var OhioUnion = new google.maps.Marker({ position: OhioUnionLoc, map: map })
-}
 
-button.addEventListener("click", function () {
-    infowindow.setContent("QWERTG");
-});
+    var OhioUnion = new google.maps.Marker({
+        position: OhioUnionLoc,
+        map: map,
+        icon: RestroomIcon
+    });
+
+    infowindow = new google.maps.InfoWindow({
+        content: button
+    });
+
+
+    OhioUnion.addListener('click', function () {
+        infowindow.open(map, OhioUnion);
+    });
+
+    button.addEventListener("click", function () {
+        infowindow.setContent("QWERTG");
+    });
+
+}
